@@ -1,0 +1,146 @@
+/* .cosmicBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -2;
+  background: black;
+}
+
+.nebula {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+#starsCanvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  display: block;
+} */
+
+/* .cosmicBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(ellipse at bottom, #0b0c2a 0%, #000 100%);
+  overflow: hidden;
+}
+
+.nebula {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: float 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+canvas#starsCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+@keyframes float {
+  0% {
+    transform: scale(1) translateY(0px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05) translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 0.7;
+  }
+} */
+
+.cosmicBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(ellipse at bottom, #0b0c2a 0%, #000 100%);
+  overflow: hidden;
+}
+
+.nebula {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: float 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+canvas#starsCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+@keyframes float {
+  0% {
+    transform: scale(1) translateY(0px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05) translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes shootingStar {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-1000px) translateY(1000px);
+    opacity: 0;
+  }
+}
+
+.shootingStar {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(white, transparent);
+  opacity: 0;
+  animation: shootingStar 1.5s linear infinite;
+}
+
+.shootingStar:nth-child(1) {
+  top: 10%;
+  left: 90%;
+  animation-delay: 3s;
+}
+
+.shootingStar:nth-child(2) {
+  top: 20%;
+  left: 80%;
+  animation-delay: 6s;
+}
+
+.shootingStar:nth-child(3) {
+  top: 5%;
+  left: 95%;
+  animation-delay: 9s;
+}

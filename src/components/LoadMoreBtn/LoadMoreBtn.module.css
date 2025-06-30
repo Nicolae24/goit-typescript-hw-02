@@ -1,0 +1,30 @@
+.button {
+  display: inline-block;
+  padding: 12px 30px;
+  margin: 20px auto;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(45deg, #651fff, #ff80ab);
+  border: 2px solid #ff80ab;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #651fff, 0 0 20px #ff80ab, 0 0 40px #651fff inset;
+  transition: all 0.3s ease;
+  user-select: none;
+  text-align: center;
+  min-width: 160px;
+}
+
+.button:hover,
+.button:focus {
+  background: linear-gradient(45deg, #ff80ab, #651fff);
+  box-shadow: 0 0 20px #ff80ab, 0 0 40px #651fff, 0 0 60px #ff80ab inset;
+  outline: none;
+  transform: scale(1.05);
+}
+
+.button:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 8px #ff80ab, 0 0 16px #651fff inset;
+}

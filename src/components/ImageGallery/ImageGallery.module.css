@@ -1,0 +1,39 @@
+/* .gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; 
+  padding: 20px;
+  list-style: none;
+  justify-content: center;
+  margin: 0;
+}
+
+.galleryItem {
+ 
+  flex: 1 1 280px;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+} */
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+  list-style: none;
+  justify-content: center;
+  margin: 0;
+}
+
+.galleryItem {
+  width: 300px; /* фіксована ширина ліжка */
+  height: 200px; /* фіксована висота ліжка */
+  display: flex;
+  justify-content: center; /* центруємо по горизонталі */
+  align-items: center; /* центруємо по вертикалі */
+  background-color: #f0f0f0; /* наприклад, світлий фон для наочності */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
