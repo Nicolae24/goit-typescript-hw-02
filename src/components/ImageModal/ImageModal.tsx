@@ -1,12 +1,12 @@
-import Modal from "react-modal";
+import Modal, { Styles } from "react-modal";
 import { JSX } from "react";
 
-const customStyles = {
+const customStyles: Styles = {
   overlay: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    zIndex: "999999",
+    zIndex: 999999,
     backgroundColor: "rgba(45, 45, 45, 0.3)",
     backdropFilter: "blur(5px)",
   },
