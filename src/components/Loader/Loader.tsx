@@ -1,6 +1,8 @@
 import { RingLoader } from "react-spinners";
 import s from "./Loader.module.css";
-const Loader = () => {
+import { JSX } from "react";
+
+const Loader = (): JSX.Element => {
   return (
     <div className={s.loader}>
       <RingLoader

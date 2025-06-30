@@ -2,7 +2,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 
 import { getPhotos } from "./service/photosApi";
-import { useEffect, useState } from "react";
+import { useEffect, useState, JSX } from "react";
 import "./App.css";
 import Loader from "./components/Loader/Loader";
 
@@ -11,17 +11,18 @@ import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import Heading from "./components/Heading/Heading";
+import { ImageItem, ModalImage } from "./types";
 
-function App() {
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [photos, setPhotos] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isEmpty, setIsEmpty] = useState(false);
-  const [error, setError] = useState("");
-  const [hasMore, setHasMore] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalPhoto, setModalPhoto] = useState({});
+const App = (): JSX.Element => {
+  const [query, setQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [photos, setPhotos] = useState<ImageItem[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isEmpty, setIsEmpty] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+  const [hasMore, setHasMore] = useState<boolean>(false);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [modalPhoto, setModalPhoto] = useState<ModalImage | null>(null);
 
   useEffect(() => {
     if (!query) return;
@@ -32,12 +33,15 @@ function App() {
         if (total_pages === 0) {
           setIsEmpty(true);
           return;
-        } else {
-          setPhotos((prev) => [...prev, ...results]);
         }
+        setPhotos((prev) => [...prev, ...results]);
         setHasMore(page < total_pages);
-      } catch (error) {
-        setError(error.message);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError("An unknown error occurred");
+        }
       } finally {
         setIsLoading(false);
       }
@@ -46,7 +50,7 @@ function App() {
     fetchPhotos();
   }, [query, page]);
 
-  const handleSearchSubmit = (searchQuery) => {
+  const handleSearchSubmit = (searchQuery: string): void => {
     setQuery(searchQuery);
     setPage(1);
     setError("");
@@ -55,16 +59,16 @@ function App() {
     setHasMore(false);
   };
 
-  const handleLoadMore = () => {
+  const handleLoadMore = (): void => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const handleOpenModal = (photo) => {
+  const handleOpenModal = (photo: ModalImage) => {
     setModalPhoto(photo);
     setModalIsOpen(true);
   };
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (): void => {
     setModalIsOpen(false);
   };
   return (
@@ -82,11 +86,11 @@ function App() {
       <ImageModal
         modalIsOpen={modalIsOpen}
         closeModal={handleCloseModal}
-        src={modalPhoto.src}
-        alt={modalPhoto.alt}
+        src={modalPhoto?.src || ""}
+        alt={modalPhoto?.alt || ""}
       />
     </>
   );
-}
+};
 
 export default App;
